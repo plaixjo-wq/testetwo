@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <script>
+      (function () {
+        var ua = navigator.userAgent || "";
+        var mobileUA =
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            ua
+          );
+        var touch =
+          navigator.maxTouchPoints && navigator.maxTouchPoints > 0;
+        var narrowScreen = window.screen.width <= 768;
+        if (!mobileUA && !touch && !narrowScreen) {
+          window.location.href = "erro.html";
+        }
+      })();
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parabéns! Você Foi Aceito(a)!</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-dark: #2c3e50;
+        --primary-darker: #1a252f;
+        --accent-yellow: #ffc107;
+        --accent-yellow-dark: #ffb300;
+        --accent-yellow-light: #ffd54f;
+        --background-light: #f4f7f6;
+        --background-lighter: #fafbfb;
+        --text-dark: #2c3e50;
+        --text-medium: #5a6c7d;
+        --text-light: #8899a6;
+        --border-light: #e1e8ed;
+        --white: #ffffff;
+        --success: #27ae60;
+        --shadow-md: 0 4px 6px -1px rgba(44, 62, 80, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(44, 62, 80, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(44, 62, 80, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: linear-gradient(135deg, var(--background-light) 0%, var(--background-lighter) 100%);
+        color: var(--text-dark);
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .container {
+        background-color: var(--white);
+        padding: 0;
+        border-radius: 16px;
+        box-shadow: var(--shadow-xl);
+        max-width: 900px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .header {
+        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+        color: var(--white);
+        padding: 48px 32px;
+        text-align: center;
+        position: relative;
+      }
+
+      .header-badge {
+        display: inline-block;
+        background-color: var(--success);
+        color: var(--white);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+        line-height: 1.2;
+      }
+
+      .header-subtitle {
+        color: var(--background-lighter);
+        font-size: 0.95rem;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+
+      .content-wrapper {
+        padding: 48px 40px;
+      }
+
+      h2 {
+        color: var(--text-dark);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 24px;
+        letter-spacing: -0.3px;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+        color: var(--text-medium);
+        margin-bottom: 16px;
+        font-weight: 400;
+      }
+
+      .intro-text.highlight {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 1.1rem;
+      }
+
+      .salary-range {
+        background: rgb(255, 235, 192);
+        color: #444;
+        padding: 24px;
+        margin: 32px 0;
+        border-radius: 12px;
+        font-weight: 500;
+        font-size: 1.125rem;
+        box-shadow: var(--shadow-md);
+        border-left: 4px solid var(--accent-yellow-dark);
+      }
+
+      /* Caixa de escolha de horário (rádio único) */
+      .time-box {
+        border: 1px solid var(--border-light);
+        padding: 18px 20px;
+        border-radius: 12px;
+        margin: 18px 0;
+        background: #fff;
+      }
+
+      .time-box .intro-text {
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      .time-options {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .time-options label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+        color: var(--text-dark);
+        cursor: pointer;
+      }
+
+      .time-options input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        -webkit-appearance: radio;
+        appearance: radio;
+        accent-color: #000;
+      }
+
+      .benefits-section {
+        margin: 40px 0;
+      }
+
+      .benefits-section h3 {
+        color: var(--text-dark);
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 24px;
+        letter-spacing: -0.3px;
+      }
+
+      .benefits-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid var(--border-light);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .benefits-table thead {
+        background-color: var(--background-light);
+      }
+
+      .benefits-table th {
+        padding: 16px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-medium);
+        border-bottom: 2px solid var(--border-light);
+      }
+
+      .benefits-table td {
+        padding: 16px;
+        border-bottom: 1px solid var(--border-light);
+        font-size: 0.95rem;
+      }
+
+      .benefits-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      .benefits-table tbody tr {
+        transition: background-color 0.2s ease;
+      }
+
+      .benefits-table tbody tr:hover {
+        background-color: var(--background-lighter);
+      }
+
+      .benefits-table td:first-child {
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .benefits-table td:last-child {
+        color: var(--text-medium);
+      }
+
+      .table-header-benefit {
+        width: 40%;
+      }
+
+      .table-header-details {
+        width: 60%;
+      }
+
+      .career-message {
+        margin: 40px 0;
+        padding: 24px;
+        background-color: #E8F8F5;
+        border-radius: 12px;
+        border-left: 4px solid #2c3e50;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #444;
+        font-weight: 400;
+      }
+
+      .call-to-action {
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border-light);
+        text-align: center;
+      }
+
+      .cta-text {
+        color: var(--text-medium);
+        margin-bottom: 24px;
+        font-size: 0.95rem;
+      }
+
+      .admission-button {
+        display: inline-block;
+        padding: 16px 40px;
+        font-size: 1rem;
+        color: var(--primary-dark);
+        background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-yellow-light) 100%);
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-md);
+        letter-spacing: 0.3px;
+      }
+
+      .admission-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        background: linear-gradient(135deg, var(--accent-yellow-dark) 0%, var(--accent-yellow) 100%);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        animation: fadeInBg 0.3s ease;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal.show {
+        display: flex;
+      }
+
+      @keyframes fadeInBg {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        background-color: var(--white);
+        margin: 20px;
+        padding: 40px;
+        border: none;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 16px;
+        box-shadow: var(--shadow-xl);
+        animation: slideUp 0.4s ease-out;
+        text-align: center;
+        position: relative;
+      }
+
+      .modal-badge {
+        display: inline-block;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin: 0 auto 20px;
+      }
+
+      .modal-content h3 {
+        color: var(--text-dark);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: -0.3px;
+      }
+
+      .modal-content p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: var(--text-medium);
+        margin-bottom: 20px;
+      }
+
+      .modal-button {
+        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+        color: var(--white);
+        padding: 14px 32px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-md);
+      }
+
+      .modal-button:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+        opacity: 0.9;
+      }
+
+      .modal-button:active {
+        transform: translateY(0);
+      }
+
+      .signature {
+        margin-top: 25px;
+        font-size: 0.875rem;
+        color: var(--text-light);
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+        }
+
+        .header {
+          padding: 32px 24px;
+        }
+
+        .header h1 {
+          font-size: 1.5rem;
+        }
+
+        .content-wrapper {
+          padding: 32px 24px;
+        }
+
+        .benefits-table th,
+        .benefits-table td {
+          padding: 12px;
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="admission-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-badge">✓</div>
+        <h3>Aprovação Confirmada!</h3>
+        <p>
+          Se você está nessa página, é porque <strong>você foi aceito(a)</strong> no nosso
+          processo seletivo!
+        </p>
+        <p>
+          Agora, só precisamos que você dê entrada na guia de exames
+          admissionais. Após a conclusão, você receberá novas informações sobre
+          uma reunião para conhecer nossa empresa e começar a trabalhar conosco.
+        </p>
+        <button class="modal-button" onclick="closeModal()">
+          Entendi, prosseguir
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="header">
+        <span class="header-badge">Aprovado</span>
+        <h1>Parabéns! Você Foi Aceito(a)</h1>
+        <p class="header-subtitle">Processo Seletivo - Etapa Final</p>
+      </div>
+
+      <div class="content-wrapper">
+        <h2>Caro(a) Candidato(a),</h2>
+
+        <p class="intro-text highlight">
+          É com grande satisfação que anunciamos: você foi aceito(a) no nosso
+          processo seletivo.
+        </p>
+        <p class="intro-text">
+          Seu talento e dedicação nos impressionaram. Estamos muito entusiasmados
+          para tê-lo(a) em nossa equipe!
+        </p>
+
+        <div class="salary-range">
+          
+
+          <div style="margin-top:12px; font-weight:600;">Remuneração:</div>
+          <div style="margin-top:6px; font-weight:500;">Salário de R$1.813 á 6.983 conforme desempenho e cumprimento de metas internas.</div>
+
+          
+        </div>
+
+        <div class="benefits-section">
+          <h3>Seus Benefícios Exclusivos</h3>
+
+          <table class="benefits-table">
+            <thead>
+              <tr>
+                <th class="table-header-benefit">Benefício</th>
+                <th class="table-header-details">Detalhes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Vale Alimentação</td>
+                <td>Para suas compras do dia a dia</td>
+              </tr>
+              <tr>
+                <td>Assistência Médica</td>
+                <td>Cobertura de saúde completa para você</td>
+              </tr>
+              <tr>
+                <td>Assistência Odontológica</td>
+                <td>Cuidado com a sua saúde bucal</td>
+              </tr>
+              <tr>
+                <td>Participação nos Lucros</td>
+                <td>Participação na lucratividade da empresa</td>
+              </tr>
+              <tr>
+                <td>Auxílio Curso de Idiomas</td>
+                <td>Investimento no seu desenvolvimento profissional</td>
+              </tr>
+              <tr>
+                <td>Gym Pass</td>
+                <td>Incentivo à sua saúde e qualidade de vida</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="career-message">
+          É muito importante ter você conosco. Conte conosco para montar e
+          desenvolver sua carreira. Seu crescimento é o nosso sucesso.
+        </div>
+
+        <div class="call-to-action">
+          <p class="cta-text">
+            O último passo para formalizar sua contratação é o exame de admissão.<br />
+            Clique no botão abaixo para prosseguir e receber todas as informações
+            sobre agendamento, localização e documentos necessários.
+          </p>
+
+          <a href="seguro.html" class="admission-button">
+            Prosseguir para o Exame de Admissão
+          </a>
+        </div>
+
+        <p class="signature">Atenciosamente</p>
+      </div>
+    </div>
+
+    <script>
+      var modal = document.getElementById("admission-modal");
+
+      function closeModal() {
+        modal.classList.remove("show");
+      }
+
+      window.onload = function () {
+        modal.classList.add("show");
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      };
+    </script>
+  </body>
+</html>
